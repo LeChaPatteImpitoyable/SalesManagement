@@ -1,0 +1,48 @@
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+						http://www.springframework.org/schema/beans/spring-beans.xsd
+						http://www.springframework.org/schema/security
+						http://www.springframework.org/schema/security/spring-security.xsd
+						http://www.springframework.org/schema/context
+						http://www.springframework.org/schema/context/spring-context.xsd">
+	
+	<context:annotation-config/>
+    
+    <http auto-config="true">
+    	<intercept-url pattern="/resources/css/**" access="permitAll" />
+    	<intercept-url pattern="/resources/img/**" access="permitAll" />
+    	<intercept-url pattern="/login**" access="permitAll" />
+    	<intercept-url pattern="/**" access="isAuthenticated()" />
+		<form-login 
+		    login-page="/login" 
+		    default-target-url="/#/ofertas"
+		    login-processing-url="/j_spring_security_check"
+		    authentication-failure-handler-ref="authenticationHandler"
+			authentication-failure-url="/login?error"
+			username-parameter="email"
+			password-parameter="password"/>
+		<logout logout-success-url="/login?logout"/>
+		<custom-filter after="CSRF_FILTER" ref="csrfTokenFilter"/>
+		<csrf/>
+	</http>
+	
+	<authentication-manager>
+		<authentication-provider user-service-ref="loginUserDetailsService" />
+	</authentication-manager>
+	
+    <global-method-security pre-post-annotations="enabled">
+        <expression-handler ref="expressionHandler" />
+    </global-method-security>
+    
+    <beans:bean id="expressionHandler" class="org.springframework.security.web.access.expression.DefaultWebSecurityExpressionHandler">
+          <beans:property name="permissionEvaluator" ref="customPermissionEvaluator" />
+    </beans:bean>
+	<beans:bean id="loginUserDetailsService" class="com.acomerci.offering.model.business.ManageUserBF" />
+    <beans:bean id="customPermissionEvaluator" class="com.acomerci.offering.permission.CustomPermissionEvaluator"/>
+    <beans:bean id="authenticationHandler" class="com.acomerci.offering.permission.CustomAuthenticationHandler"/>
+    <beans:bean id="csrfTokenFilter" class="com.acomerci.offering.session.CsrfTokenGeneratorFilter"/>
+
+</beans:beans>

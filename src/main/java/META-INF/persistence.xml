@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1"
+	xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+	<persistence-unit name="SalesManagement" transaction-type="RESOURCE_LOCAL">
+		<class>com.acomerci.offering.model.entities.Action</class>
+		<class>com.acomerci.offering.model.entities.ActivityLog</class>
+		<class>com.acomerci.offering.model.entities.Bank</class>
+		<class>com.acomerci.offering.model.entities.BusinessDay</class>
+		<class>com.acomerci.offering.model.entities.BusinessDayPK</class>
+		<class>com.acomerci.offering.model.entities.BusinessHour</class>
+		<class>com.acomerci.offering.model.entities.BusinessHourPK</class>
+		<class>com.acomerci.offering.model.entities.BusinessHourType</class>
+		<class>com.acomerci.offering.model.entities.Currency</class>
+		<class>com.acomerci.offering.model.entities.Day</class>
+		<class>com.acomerci.offering.model.entities.FinancialService</class>
+		<class>com.acomerci.offering.model.entities.Offering</class>
+		<class>com.acomerci.offering.model.entities.OfferingStatus</class>
+		<class>com.acomerci.offering.model.entities.Product</class>
+		<class>com.acomerci.offering.model.entities.ProductType</class>
+		<class>com.acomerci.offering.model.entities.Role</class>
+		<class>com.acomerci.offering.model.entities.Status</class>
+		<class>com.acomerci.offering.model.entities.User</class>
+		<!-- Local -->
+		<properties>
+			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/SalesManagement?autoReconnect=true"/>
+			<property name="javax.persistence.jdbc.user" value="root"/>
+			<property name="javax.persistence.jdbc.password" value="root"/>
+			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+			<property name="eclipselink.session.customizer" value="com.acomerci.offering.session.DbSessionCustomizer"/>
+		</properties>
+	</persistence-unit>
+</persistence>
