@@ -24,3 +24,5 @@ Password: publicador
 Profile: Configuration
 Email: configuracion@test.com
 Password: configuracion
+
+![Login](/screenshots/login.png?raw=true "Login")
