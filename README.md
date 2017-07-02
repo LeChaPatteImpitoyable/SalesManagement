@@ -1,5 +1,14 @@
 # Sales Management
 
+## Techonologies used
+* Java 1.6
+* Spring MVC 4.1.7 RELEASE
+* Spring Security 4.0.2 RELEASE
+* Hibernate JPA 2.0
+* MySQL 5.1.36
+* AngularJS 1.4.2
+* Bootstrap 3.3.5
+
 ## Installation
 1) Import db/dump.sql in MySQL database.
 2) Import project as Maven project.
