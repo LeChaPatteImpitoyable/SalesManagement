@@ -3,17 +3,17 @@
 <div class="container" data-ng-init="getOfferings()">
 	<!-- Filtros -->
 	<form class="form-inline">
-		<div class="col-md-3 col-sm-4">
+		<div class="col-sm-3">
 	    	<label>Per&iacute;odo</label><br>
 	    	<div class="form-group btn-group">
-		        <label class="btn btn-primary" data-ng-model="period" data-btn-radio="'YTD'" data-uncheckable>YTD</label>
-		        <label class="btn btn-primary" data-ng-model="period" data-btn-radio="'MTD'" data-uncheckable>MTD</label>
-		        <label class="btn btn-primary" data-ng-model="period" data-btn-radio="'WTD'" data-uncheckable>WTD</label>
+		        <label class="btn btn-primary btn-autosize" data-ng-model="period" data-btn-radio="'YTD'" data-uncheckable>YTD</label>
+		        <label class="btn btn-primary btn-autosize" data-ng-model="period" data-btn-radio="'MTD'" data-uncheckable>MTD</label>
+		        <label class="btn btn-primary btn-autosize" data-ng-model="period" data-btn-radio="'WTD'" data-uncheckable>WTD</label>
 	        </div>
 	    </div>
 	    
-		<div class="form-group col-md-3 col-sm-4">
-	    	<label for="fechaDesde">F. Creaci&oacute;n Desde</label><br>
+		<div class="form-group col-sm-3">
+	    	<label class="label" for="fechaDesde">F. Creaci&oacute;n Desde</label><br>
 			<div class="input-group datepicker">
 				<input
 					id="fechaDesde"
@@ -32,7 +32,7 @@
 	        </div>
 		</div>
 		
-		<div class="form-group col-md-3 col-sm-4">
+		<div class="form-group col-sm-3">
 	    	<label for="fechaHasta">F. Creaci&oacute;n Hasta</label><br>
 			<div class="input-group datepicker">
 				<input
@@ -53,7 +53,7 @@
 		</div>
 		
 		<div id="divStatus"
-			class="form-group col-md-3 col-sm-12">
+			class="form-group col-sm-3">
 			<label for="estado">Estado</label><br>
 			<select
 				class="form-control" 
@@ -93,7 +93,7 @@
 		</div>
 		
 		<!-- Botonera -->
-		<div class="col-md-1 col-sm-12 text-center">
+		<div class="col-md-1 col-sm-12 text-center nopadding">
 			<a href=""
 				class="btn botonera"
 				style="text-decoration: none; font-size: 25px; margin-bottom: 0px;"
@@ -104,69 +104,83 @@
 			</a>
 			
 			<sec:accesscontrollist hasPermission="CREATE_OFFERING" domainObject="null">
-				<a href="#/oferta"
-					class="btn btn-primary botonera">
-					Nueva
-				</a>
+				<div class="col-xs-12 nopadding">
+					<a href="#/oferta"
+						class="btn btn-primary botonera">
+						Nueva
+					</a>
+				</div>
 			</sec:accesscontrollist>
 			
 			<sec:accesscontrollist hasPermission="VIEW_OFFERING" domainObject="null">
-				<a href="#/oferta/{{selectedOffering.id}}"
-					data-ng-show="selectedOffering.id != null && (!canEdit || (selectedOffering.status.id != 1 && selectedOffering.status.id != 7))"
-					class="btn btn-primary botonera">
-					Ver
-				</a>
+				<div class="col-xs-12 nopadding">
+					<a href="#/oferta/{{selectedOffering.id}}"
+						data-ng-show="selectedOffering.id != null && (!canEdit || (selectedOffering.status.id != 1 && selectedOffering.status.id != 7))"
+						class="btn btn-primary botonera">
+						Ver
+					</a>
+				</div>
 			</sec:accesscontrollist>
 			
 			<sec:accesscontrollist hasPermission="EDIT_OFFERING" domainObject="null">
-				<a href="#/oferta/{{selectedOffering.id}}"
-					data-ng-show="selectedOffering.id != null && (selectedOffering.status.id == 1 || selectedOffering.status.id == 7)"
-					class="btn btn-primary botonera">
-					Editar
-				</a>
-				<input type="hidden" value="1" id="canEdit"/>
+				<div class="col-xs-12 nopadding">
+					<a href="#/oferta/{{selectedOffering.id}}"
+						data-ng-show="selectedOffering.id != null && (selectedOffering.status.id == 1 || selectedOffering.status.id == 7)"
+						class="btn btn-primary botonera">
+						Editar
+					</a>
+					<input type="hidden" value="1" id="canEdit"/>
+				</div>
 			</sec:accesscontrollist>
 			
 			<sec:accesscontrollist hasPermission="REMOVE_OFFERING" domainObject="null">
-				<a data-ng-click="openConfirmation('deleteOffering',
-												   '&iquest;Est&aacute; seguro que desea eliminar la oferta seleccionada?')"
-					data-ng-show="selectedOffering.id != null && (selectedOffering.status.id == 1 || 
-																 selectedOffering.status.id == 6 ||
-																 selectedOffering.status.id == 7)"
-					class="btn btn-primary botonera">
-					Eliminar
-				</a>
+				<div class="col-xs-12 nopadding">
+					<a data-ng-click="openConfirmation('deleteOffering',
+													   '&iquest;Est&aacute; seguro que desea eliminar la oferta seleccionada?')"
+						data-ng-show="selectedOffering.id != null && (selectedOffering.status.id == 1 || 
+																	 selectedOffering.status.id == 6 ||
+																	 selectedOffering.status.id == 7)"
+						class="btn btn-primary botonera">
+						Eliminar
+					</a>
+				</div>
 			</sec:accesscontrollist>
 			
 			<sec:accesscontrollist hasPermission="RETIRE_OFFERING" domainObject="null">
-				<a data-ng-click="openConfirmation('retireOffering',
-												   '&iquest;Est&aacute; seguro que desea retirar la oferta seleccionada?')"
-					data-ng-show="selectedOffering.status.id == 2"
-					class="btn btn-primary botonera">
-					Retirar
-				</a>
+				<div class="col-xs-12 nopadding">
+					<a data-ng-click="openConfirmation('retireOffering',
+													   '&iquest;Est&aacute; seguro que desea retirar la oferta seleccionada?')"
+						data-ng-show="selectedOffering.status.id == 2"
+						class="btn btn-primary botonera">
+						Retirar
+					</a>
+				</div>
 			</sec:accesscontrollist>
 			
 			<sec:accesscontrollist hasPermission="DUPLICATE_OFFERING" domainObject="null">
-				<a data-ng-click="openConfirmation('duplicateOffering',
-												   '&iquest;Est&aacute; seguro que desea duplicar la oferta seleccionada?')"
-					data-ng-show="selectedOffering.id != null"
-					class="btn btn-primary botonera">
-					Duplicar
-				</a>
+				<div class="col-xs-12 nopadding">
+					<a data-ng-click="openConfirmation('duplicateOffering',
+													   '&iquest;Est&aacute; seguro que desea duplicar la oferta seleccionada?')"
+						data-ng-show="selectedOffering.id != null"
+						class="btn btn-primary botonera">
+						Duplicar
+					</a>
+				</div>
 			</sec:accesscontrollist>
 			
 			<sec:accesscontrollist hasPermission="REQ_PUBLISH_OFFERING" domainObject="null">
-				<a data-ng-click="openConfirmation('requestPublishOffering',
-												   '&iquest;Est&aacute; seguro que desea solicitar la publicaci&oacute;n de la oferta seleccionada?')"
-					data-ng-show="selectedOffering.id != null && (selectedOffering.status.id == 1 || selectedOffering.status.id == 7)"
-					class="btn btn-primary botonera">
-					Solicitar publicaci&oacute;n
-				</a>
+				<div class="col-xs-12 nopadding">
+					<a data-ng-click="openConfirmation('requestPublishOffering',
+													   '&iquest;Est&aacute; seguro que desea solicitar la publicaci&oacute;n de la oferta seleccionada?')"
+						data-ng-show="selectedOffering.id != null && (selectedOffering.status.id == 1 || selectedOffering.status.id == 7)"
+						class="btn btn-primary botonera">
+						Solicitar publicaci&oacute;n
+					</a>
+				</div>
 			</sec:accesscontrollist>
 			
 			<sec:accesscontrollist hasPermission="PUBLISH_OFFERING" domainObject="null">
-				<div
+				<div class="col-xs-12 nopadding"
 					data-popover="{{cantPublishReason}}"
 					data-popover-placement="left"
 					data-popover-trigger="mouseenter">
@@ -181,13 +195,15 @@
 			</sec:accesscontrollist>
 			
 			<sec:accesscontrollist hasPermission="REJECT_OFFERING" domainObject="null">
-				<a data-ng-click="openConfirmation('rejectOffering',
-												   '&iquest;Est&aacute; seguro que desea rechazar la oferta seleccionada?')"
-					data-ng-show="selectedOffering.id != null"
-					data-a-disabled="selectedOffering.status.id != 6"
-					class="btn btn-primary botonera">
-					Rechazar
-				</a>
+				<div class="col-xs-12 nopadding">
+					<a data-ng-click="openConfirmation('rejectOffering',
+													   '&iquest;Est&aacute; seguro que desea rechazar la oferta seleccionada?')"
+						data-ng-show="selectedOffering.id != null"
+						data-a-disabled="selectedOffering.status.id != 6"
+						class="btn btn-primary botonera">
+						Rechazar
+					</a>
+				</div>
 			</sec:accesscontrollist>
 		</div>
 	</div>

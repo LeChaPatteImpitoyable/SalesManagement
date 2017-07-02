@@ -3,25 +3,25 @@
 		<!-- Oferta -->
 		<div class="form-inline text-center"
 			style="margin-bottom: 15px;">
-			<div class="form-group">
+			<div class="form-group col-lg-3 col-sm-6 nopadding">
 				<label for="creationDate">F. Creaci&oacute;n</label>
 				<input
 					name="creationDate"
 	        		type="text"
 	         		class="form-control"
-	         		style="width: 120px; margin-right: 30px;"
+	         		style="width: 120px;"
 	         		data-datetime="dd/MM/yyyy"
 	         		data-ng-model="offering.creationDate"
 	         		readonly/>
 			</div>
 					
-			<div class="form-group">
+			<div class="form-group col-lg-3 col-sm-6 nopadding">
 				<label for="publishDate">F. Publicaci&oacute;n</label>
 				<input
 					name="publishDate"
 	        		type="text"
 	         		class="form-control"
-	         		style="width: 120px; margin-right: 30px;"
+	         		style="width: 120px;"
 	         		data-datetime="dd/MM/yyyy"
 	         		data-ng-model="offering.publishDate"
 	         		readonly/>

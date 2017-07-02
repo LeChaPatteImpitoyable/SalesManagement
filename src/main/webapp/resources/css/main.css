@@ -89,10 +89,18 @@
 }
 
 .botonera {
-    min-width: 100px;
-    max-width: 100px;
-    margin-bottom: 10px;
+    min-width: 80%;
     white-space: normal;
+    margin: 3px 0;
+}
+
+@media screen and (min-width: 992px) {
+	.botonera {
+	    min-width: 100px;
+	    max-width: 100px;
+	    margin-bottom: 10px;
+	    white-space: normal;
+	}
 }
 
 .btn-file {
@@ -212,4 +220,29 @@ div.centered table {
 
 @media (max-width: 767px) {
     .text-right { text-align:left }
+}
+
+.btn-autosize {
+	padding: 6px 12px;
+	font-size: 14px;
+	line-height: 1.42857143;
+	border-radius: 4px;
+}
+
+@media screen and (min-width: 768px) {
+	.btn-autosize {
+		padding: 5px 10px;
+		font-size: 12px;
+		line-height: 1.5;
+		border-radius: 3px;
+	}
+}
+
+@media screen and (min-width: 992px) {
+	.btn-autosize {
+		padding: 6px 12px;
+		font-size: 14px;
+		line-height: 1.42857143;
+		border-radius: 4px;
+	}
 }
